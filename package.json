@@ -4,8 +4,21 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
+  "packageManager": "pnpm@8.15.5",
+  "author": {
+    "name": "chillcicada",
+    "email": "2210227279@qq.com",
+    "url": "https://chillcicada.com"
+  },
+  "contributors": [
+    {
+      "name": "chillcicada",
+      "email": "2210227279@qq.com"
+    }
+  ],
+  "license": "MIT",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
@@ -15,6 +28,7 @@
   },
   "dependencies": {
     "@material/material-color-utilities": "0.2.7",
+    "nprogress": "0.2.0",
     "vue": "3.4.21"
   },
   "devDependencies": {
@@ -22,6 +36,7 @@
     "@vitejs/plugin-vue": "5.0.4",
     "eslint": "8.57.0",
     "eslint-plugin-format": "0.1.0",
+    "lightningcss": "1.24.1",
     "lint-staged": "15.2.2",
     "simple-git-hooks": "2.11.0",
     "typescript": "5.2.2",
