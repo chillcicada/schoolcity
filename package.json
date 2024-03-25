@@ -1,0 +1,38 @@
+{
+  "name": "jsd-school-city",
+  "displayName": "Jsd School City",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "postinstall": "npx simple-git-hooks",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "dependencies": {
+    "@material/material-color-utilities": "0.2.7",
+    "vue": "3.4.21"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "2.9.0",
+    "@vitejs/plugin-vue": "5.0.4",
+    "eslint": "8.57.0",
+    "eslint-plugin-format": "0.1.0",
+    "lint-staged": "15.2.2",
+    "simple-git-hooks": "2.11.0",
+    "typescript": "5.2.2",
+    "vite": "5.2.0",
+    "vue-router": "4.3.0",
+    "vue-tsc": "2.0.6"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}
