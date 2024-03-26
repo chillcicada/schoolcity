@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
 import { applyTheme, themeFromImage } from '@material/material-color-utilities'
-import { ref, watch } from 'vue'
 import Banner from '@/components/Banner.vue'
 import backgroundUrl from '@/assets/media/background_by_F0rest.webp'
 
@@ -19,7 +17,7 @@ watch(background, setBackgroundTheme, { once: true })
 
 <template>
   <img id="background" ref="background" :src="backgroundUrl" alt="background">
-  <div id="shadow-overlay" />
+  <div id="overlay" />
   <Banner />
   <RouterView />
 </template>
@@ -38,7 +36,7 @@ watch(background, setBackgroundTheme, { once: true })
   max-width: var(--max-width);
 }
 
-#shadow-overlay {
+#overlay {
   display: block;
   position: fixed;
   top: 0;
