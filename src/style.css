@@ -5,7 +5,7 @@
 }
 
 html {
-  overflow-y: hidden;
+  overscroll-behavior: none;
 }
 
 body {
@@ -17,39 +17,26 @@ body {
   text-align: center;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
-  }
-} */
-
-/* :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  user-select: none;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* animations */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+  to {
+    opacity: 1;
   }
 }
 
---md-sys-color-primary: #ffb3b5; --md-sys-color-on-primary: #680018; --md-sys-color-primary-container: #8e0f29; --md-sys-color-on-primary-container: #ffdada; --md-sys-color-secondary: #e6bdbd; --md-sys-color-on-secondary: #44292a; --md-sys-color-secondary-container: #5d3f40; --md-sys-color-on-secondary-container: #ffdada; --md-sys-color-tertiary: #e6c18d; --md-sys-color-on-tertiary: #432c05; --md-sys-color-tertiary-container: #5c421a; --md-sys-color-on-tertiary-container: #ffddb1; --md-sys-color-error: #ffb4ab; --md-sys-color-on-error: #690005; --md-sys-color-error-container: #93000a; --md-sys-color-on-error-container: #ffb4ab; --md-sys-color-background: #201a1a; --md-sys-color-on-background: #ece0df; --md-sys-color-surface: #201a1a; --md-sys-color-on-surface: #ece0df; --md-sys-color-surface-variant: #524343; --md-sys-color-on-surface-variant: #d7c1c1; --md-sys-color-outline: #9f8c8c; --md-sys-color-outline-variant: #524343; --md-sys-color-shadow: #000000; --md-sys-color-scrim: #000000; --md-sys-color-inverse-surface: #ece0df; --md-sys-color-inverse-on-surface: #362f2f; --md-sys-color-inverse-primary: #af2b3e;*/
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

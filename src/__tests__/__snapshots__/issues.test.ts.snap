@@ -1,0 +1,227 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`issues > expect issues in random order 1`] = `
+[
+  {
+    "answer": "B",
+    "content": "“学园都市”代表着本次咖啡厅主题原作品当中象征科学势力的一侧。请问，与科学势力相对的一侧是？",
+    "id": 1,
+    "input": RefImpl {
+      "__v_isRef": true,
+      "__v_isShallow": false,
+      "_rawValue": undefined,
+      "_value": undefined,
+      "dep": undefined,
+    },
+    "isCorrect": [Function],
+    "options": {
+      "A": "宗教侧",
+      "B": "魔法侧",
+      "C": "幻术侧",
+    },
+  },
+  {
+    "answer": "A",
+    "content": "学园都市每年由各学校联合举办的综合运动会名字叫？",
+    "id": 3,
+    "input": RefImpl {
+      "__v_isRef": true,
+      "__v_isShallow": false,
+      "_rawValue": undefined,
+      "_value": undefined,
+      "dep": undefined,
+    },
+    "isCorrect": [Function],
+    "options": {
+      "A": "大霸星祭",
+      "B": "奉心祭",
+      "C": "绵流祭",
+    },
+  },
+  {
+    "answer": "C",
+    "content": "本作品中，风纪委员袖标的配色是？",
+    "id": 2,
+    "input": RefImpl {
+      "__v_isRef": true,
+      "__v_isShallow": false,
+      "_rawValue": undefined,
+      "_value": undefined,
+      "dep": undefined,
+    },
+    "isCorrect": [Function],
+    "options": {
+      "A": "红白条纹",
+      "B": "蓝白条纹",
+      "C": "绿白条纹",
+    },
+  },
+  {
+    "answer": "B",
+    "content": "以下角色与其所述暗部组织对应错误的是？",
+    "id": 5,
+    "input": RefImpl {
+      "__v_isRef": true,
+      "__v_isShallow": false,
+      "_rawValue": undefined,
+      "_value": undefined,
+      "dep": undefined,
+    },
+    "isCorrect": [Function],
+    "options": {
+      "A": "泷壶理后——[ITEM]",
+      "B": "弓箭猎虎——[MEMBER]",
+      "C": "结标淡希——[GROUP]",
+    },
+  },
+  {
+    "answer": "C",
+    "content": "为本作品系列电视动画提供了多首主题曲的音乐组合 fripSide，其第二任主唱南条爱乃也作为声优为本系列动画付声。其配音的角色拥有的超能力是？",
+    "id": 4,
+    "input": RefImpl {
+      "__v_isRef": true,
+      "__v_isShallow": false,
+      "_rawValue": undefined,
+      "_value": undefined,
+      "dep": undefined,
+    },
+    "isCorrect": [Function],
+    "options": {
+      "A": "空力使",
+      "B": "水流控制",
+      "C": "流体反发",
+    },
+  },
+  {
+    "answer": "B",
+    "content": "位于学园都市正上方，搭载超级计算机“树状图设计者”的同步轨道卫星名字叫？",
+    "id": 6,
+    "input": RefImpl {
+      "__v_isRef": true,
+      "__v_isShallow": false,
+      "_rawValue": undefined,
+      "_value": undefined,
+      "dep": undefined,
+    },
+    "isCorrect": [Function],
+    "options": {
+      "A": "伞兵一号",
+      "B": "织女星一号",
+      "C": "天狼星一号",
+    },
+  },
+]
+`;
+
+exports[`issues > expect issues preview 1`] = `
+[
+  {
+    "answer": "B",
+    "content": "“学园都市”代表着本次咖啡厅主题原作品当中象征科学势力的一侧。请问，与科学势力相对的一侧是？",
+    "id": 1,
+    "input": RefImpl {
+      "__v_isRef": true,
+      "__v_isShallow": false,
+      "_rawValue": undefined,
+      "_value": undefined,
+      "dep": undefined,
+    },
+    "isCorrect": [Function],
+    "options": {
+      "A": "宗教侧",
+      "B": "魔法侧",
+      "C": "幻术侧",
+    },
+  },
+  {
+    "answer": "C",
+    "content": "本作品中，风纪委员袖标的配色是？",
+    "id": 2,
+    "input": RefImpl {
+      "__v_isRef": true,
+      "__v_isShallow": false,
+      "_rawValue": undefined,
+      "_value": undefined,
+      "dep": undefined,
+    },
+    "isCorrect": [Function],
+    "options": {
+      "A": "红白条纹",
+      "B": "蓝白条纹",
+      "C": "绿白条纹",
+    },
+  },
+  {
+    "answer": "A",
+    "content": "学园都市每年由各学校联合举办的综合运动会名字叫？",
+    "id": 3,
+    "input": RefImpl {
+      "__v_isRef": true,
+      "__v_isShallow": false,
+      "_rawValue": undefined,
+      "_value": undefined,
+      "dep": undefined,
+    },
+    "isCorrect": [Function],
+    "options": {
+      "A": "大霸星祭",
+      "B": "奉心祭",
+      "C": "绵流祭",
+    },
+  },
+  {
+    "answer": "C",
+    "content": "为本作品系列电视动画提供了多首主题曲的音乐组合 fripSide，其第二任主唱南条爱乃也作为声优为本系列动画付声。其配音的角色拥有的超能力是？",
+    "id": 4,
+    "input": RefImpl {
+      "__v_isRef": true,
+      "__v_isShallow": false,
+      "_rawValue": undefined,
+      "_value": undefined,
+      "dep": undefined,
+    },
+    "isCorrect": [Function],
+    "options": {
+      "A": "空力使",
+      "B": "水流控制",
+      "C": "流体反发",
+    },
+  },
+  {
+    "answer": "B",
+    "content": "以下角色与其所述暗部组织对应错误的是？",
+    "id": 5,
+    "input": RefImpl {
+      "__v_isRef": true,
+      "__v_isShallow": false,
+      "_rawValue": undefined,
+      "_value": undefined,
+      "dep": undefined,
+    },
+    "isCorrect": [Function],
+    "options": {
+      "A": "泷壶理后——[ITEM]",
+      "B": "弓箭猎虎——[MEMBER]",
+      "C": "结标淡希——[GROUP]",
+    },
+  },
+  {
+    "answer": "B",
+    "content": "位于学园都市正上方，搭载超级计算机“树状图设计者”的同步轨道卫星名字叫？",
+    "id": 6,
+    "input": RefImpl {
+      "__v_isRef": true,
+      "__v_isShallow": false,
+      "_rawValue": undefined,
+      "_value": undefined,
+      "dep": undefined,
+    },
+    "isCorrect": [Function],
+    "options": {
+      "A": "伞兵一号",
+      "B": "织女星一号",
+      "C": "天狼星一号",
+    },
+  },
+]
+`;

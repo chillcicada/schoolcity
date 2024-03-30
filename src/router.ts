@@ -19,9 +19,15 @@ export default createRouter({
       component: () => import('@/views/Result.vue'),
     },
     {
+      path: '/level',
+      name: 'level',
+      component: () => import('@/views/Level.vue'),
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: '404',
       component: () => import('@/views/404.vue'),
     },
+    // more routes for extra features...
   ],
 })

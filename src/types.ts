@@ -9,7 +9,7 @@ export type IssueOptionTag = keyof IssueRaw['options']
 export type IssueOption = IssueRaw['options']
 
 export interface IssueItem extends IssueRaw {
-  input: IssueOptionTag | null
+  input: globalThis.Ref<IssueOptionTag | undefined>
   isCorrect: () => boolean
 }
 // #endregion
