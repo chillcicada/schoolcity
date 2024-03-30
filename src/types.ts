@@ -4,6 +4,11 @@ import type ResultScheme from './json/results.json'
 // #region Issue
 export type IssueRaw = typeof IssueScheme[0]
 
+export type IssueType =
+  | 'single'
+  | 'multiple'
+  | 'input'
+
 export type IssueOptionTag = keyof IssueRaw['options']
 
 export type IssueOption = IssueRaw['options']

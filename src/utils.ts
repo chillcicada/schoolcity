@@ -6,12 +6,12 @@ export function randomSize(min = 1, max = 10): number {
 
 // #region Local Storage
 export function putLS(key: string, value: any): any {
-  localStorage.setItem(key, JSON.stringify(value))
+  localStorage.setItem(key, value)
   return value
 }
 
-export function getLS(key: string): string {
-  return JSON.parse(localStorage.getItem(key) || '')
+export function getLS(key: string): any {
+  return localStorage.getItem(key)
 }
 
 export function removeLS(key: string): void {
