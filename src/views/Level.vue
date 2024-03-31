@@ -23,15 +23,14 @@ function getScore(i: number) {
 <template>
   <div v-for="(issue, index) in Issues" v-show="idx === index" :key="issue.id" class="issue">
     <div>{{ idx + 1 }} | {{ length }}</div>
-    <div>{{ score }}</div>
     <IssueCard :id="issue.id" :ref="`issue${idx}`" :content="issue.content" :options="issue.options" :type="issue.type" :answer="issue.answer" />
-    <button :disabled="idx === 0 ? true : false" @click="idx--, getScore(idx)">
+    <button :disabled="idx === 0 ? true : false" class="btn" @click="idx--, getScore(idx)">
       Prev
     </button>
-    <button :disabled="idx === length - 1 ? true : false" @click="idx++, getScore(idx)">
+    <button :disabled="idx === length - 1 ? true : false" class="btn" @click="idx++, getScore(idx)">
       Next
     </button>
-    <button @click="commit">
+    <button class="btn" @click="commit">
       Commit
     </button>
   </div>
@@ -39,8 +38,6 @@ function getScore(i: number) {
 
 <style scoped>
 .issue {
-  border: 1px solid black;
-  color: var(--md-sys-color-secondary);
-  font-size: 12px;
+  margin: auto;
 }
 </style>

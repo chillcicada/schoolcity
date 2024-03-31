@@ -2,6 +2,13 @@ import type IssueScheme from './json/issues.json'
 import type ResultScheme from './json/results.json'
 
 // #region Issue
+export interface IssueBase {
+  id: number
+  content: string
+  options: Record<string, string>
+  answer: string | string[]
+}
+
 export type IssueRaw = typeof IssueScheme[0]
 
 export type IssueType =

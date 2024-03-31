@@ -4,23 +4,31 @@ import backgroundUrl from '@/assets/media/background_by_F0rest.webp'
 
 const background = ref<HTMLImageElement | null>(null)
 
+const dark = ref<boolean>(window.matchMedia('(prefers-color-scheme: dark)').matches)
+
 async function setBackgroundTheme() {
   if (background.value) {
     const theme = await themeFromImage(background.value)
-    applyTheme(theme, { dark: window.matchMedia('(prefers-color-scheme: dark)').matches, target: document.body })
+    applyTheme(theme, { dark: dark.value, target: document.body })
   }
 }
 
-watch(background, setBackgroundTheme, { once: true })
+onMounted(() => {
+  setBackgroundTheme()
+  watch(dark, setBackgroundTheme)
+})
 </script>
 
 <template>
   <Banner left="とある次世代の" right="超咖啡屋" />
   <div id="overlay" />
   <img id="background" ref="background" :src="backgroundUrl" alt="background">
-  <div class="container">
+  <!-- TODO: set transition when color change -->
+  <!-- <button class="i-carbon-moon" @click="dark = !dark" /> -->
+  <main flex-1 px-4 pb-4 text-center>
     <RouterView />
-  </div>
+  </main>
+  <Footer />
 </template>
 
 <style scoped>
@@ -50,13 +58,8 @@ watch(background, setBackgroundTheme, { once: true })
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: color-mix(in srgb, var(--md-sys-color-background),transparent);
+  background-color: color-mix(in srgb, black,transparent);
   overflow-y: hidden;
   overscroll-behavior: none;
-}
-
-.container {
-  overflow: auto;
-  max-height: calc(70vh);
 }
 </style>

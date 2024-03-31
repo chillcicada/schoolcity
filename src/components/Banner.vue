@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { randomSize } from '@/utils'
+
 const props = defineProps<{
   left: string
   right: string
@@ -11,20 +13,20 @@ const isShow = ref<boolean>(true)
   <Transition name="banner">
     <div v-show="isShow" class="banner" @click="isShow = false">
       <span class="banner-line-top" />
-      <span class="banner-content">
+      <span class="banner-content font-serif">
         <div class="banner-left">
-          <span v-for="(char, index) in props.left" :key="char" :class="index === 0 ? 'banner-char' : 'banner-char'" :style="`--char-font-size: ${index + 32}px`">
+          <span v-for="(char, index) in props.left" :key="char" :class="index === 0 ? 'banner-char' : 'banner-char'" :style="`--char-font-size: ${randomSize()}px`">
             {{ char }}
           </span>
         </div>
         <div class="banner-right">
-          <span v-for="(char, index) in props.right" :key="char" :class="index === 0 ? 'banner-char-marked' : 'banner-char'" :style="`--char-font-size: ${index + 32}px;`">
+          <span v-for="(char, index) in props.right" :key="char" :class="index === 0 ? 'banner-char-marked' : 'banner-char'" :style="`--char-font-size: ${randomSize()}px;`">
             {{ char }}
           </span>
         </div>
       </span>
       <span class="banner-line-bottom" />
-      <div class="i-carbon-arrow-right banner-btn" @click="isShow = false" />
+      <div class="banner-btn i-carbon-arrow-right" @click="isShow = false" />
     </div>
   </Transition>
 </template>
@@ -113,7 +115,6 @@ const isShow = ref<boolean>(true)
 }
 
 .banner-content {
-  font-family: "Noto Serif SC", DM Serif Display, STZhongsong, STKaiti, KaiTi, Roboto, serif;
   display: flex;
   justify-content: center;
   align-items: center;

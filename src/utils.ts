@@ -1,5 +1,5 @@
 // #region Style
-export function randomSize(min = 1, max = 10): number {
+export function randomSize(min = 48, max = 72): number {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 // #endregion

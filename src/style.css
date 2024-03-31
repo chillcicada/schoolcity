@@ -21,6 +21,24 @@ body {
   user-select: none;
 }
 
+a {
+  text-decoration: none;
+}
+
+/* scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--md-sys-color-primary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  display: none;
+}
+
 /* animations */
 
 @keyframes fadeIn {

@@ -5,12 +5,7 @@ interface Props {
   id: number
   type: string
   content: string
-  options: {
-    A: string
-    B: string
-    C: string
-  }
-  answer: string
+  options: Record<string, string>
 }
 
 const props = defineProps<Props>()
@@ -53,4 +48,17 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.issue-card {
+  margin: auto;
+  padding: 20px;
+  width: 80%;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff8;
+}
+
+.issue-option {
+  font-size: 16px;
+}
+</style>
