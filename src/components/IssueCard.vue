@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLevelScoreboardStore } from '@/store'
 import { getLS, putLS } from '@/utils'
 
 interface Props {
@@ -9,22 +10,20 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const id = `jsd-level-issue-${props.id}`
+const scoreboard = useLevelScoreboardStore()
 
-const input = ref(getLS(`jsd-level-issue-${props.id.toString()}`) || '')
-const changeable = ref<boolean>(getLS('jsd-level-issue-changeable') || true)
+const input = ref(getLS(id) || '')
 
 function updateChecked(value: string) {
-  putLS(`jsd-level-issue-${props.id.toString()}`, value)
+  scoreboard.inputs.set(id, value)
+  putLS(id, value)
 }
 
 onMounted(() => {
-  const selected = getLS(`jsd-level-issue-${props.id.toString()}`)
+  const selected = getLS(id)
   if (selected)
     input.value = selected
-
-  const _changeable = getLS('jsd-level-issue-changeable') as boolean
-  if (_changeable)
-    changeable.value = _changeable
 })
 </script>
 
@@ -34,11 +33,14 @@ onMounted(() => {
       <div class="issue-content">
         {{ props.content }}
       </div>
-      <NRadioGroup v-model:value="input" :on-update-checked="updateChecked(input)" class="issue-options">
-        <NSpace justify="center">
-          <NRadio v-for="(option, key) in props.options" :key="key" :value="key" class="issue-option" :disabled="!changeable">
+      <div v-if="scoreboard.done">
+        你已经提及了答案，无法更改了qaq。
+      </div>
+      <NRadioGroup v-model:value="input" :on-update-checked="updateChecked(input)" class="issue-options" :disabled="scoreboard.done">
+        <NSpace justify="center" vertical>
+          <NRadioButton v-for="(option, key) in props.options" :key="key" :value="key" class="issue-option">
             {{ option }}
-          </NRadio>
+          </NRadioButton>
         </NSpace>
       </NRadioGroup>
     </div>

@@ -12,18 +12,24 @@ const socials: Social[] = [
 </script>
 
 <template>
-  <footer class="footer" text="xl gray" flex flex-col items-start justify-start bg-black p-6>
+  <footer class="footer" text="xl gray left" flex flex-col p-6>
     <div class="footer-social" flex justify-start gap-4 text-size-base text-white>
       <a v-for="item in socials" :key="item.name" :class="item.icon" :href="item.link" target="_blank" />
     </div>
-    <a mt-2 text-base class="footer-join" href="" target="_blank">Join us</a>
-    <div class="footer-content" flex gap-4 text="sm gray">
-      <span>Author: chillcicada</span>
-      <span>Background: F0rest</span>
+    <a class="footer-join" mt-2 text-base href="" target="_blank">Join us</a>
+    <div class="footer-content" flex text="sm gray right" justify-end>
+      Author: chillcicada | Background: F0rest
     </div>
   </footer>
 </template>
 
 <style scoped>
+.footer {
+  background-color: var(--md-sys-color-background, #000);
+}
 
+.footer-join {
+  color: var(--md-sys-color-on-background, #fff);
+  font-weight: bold;
+}
 </style>

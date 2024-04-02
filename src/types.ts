@@ -1,5 +1,4 @@
-import type IssueScheme from './json/issues.json'
-import type ResultScheme from './json/results.json'
+import type ResultScheme from '@/json/results.json'
 
 // #region Issue
 export interface IssueBase {
@@ -9,27 +8,19 @@ export interface IssueBase {
   answer: string | string[]
 }
 
-export type IssueRaw = typeof IssueScheme[0]
-
 export type IssueType =
   | 'single'
   | 'multiple'
   | 'input'
-
-export type IssueOptionTag = keyof IssueRaw['options']
-
-export type IssueOption = IssueRaw['options']
-
-export interface IssueItem extends IssueRaw {
-  input: globalThis.Ref<IssueOptionTag | undefined>
-  isCorrect: () => boolean
-}
 // #endregion
 
-// #region Result
-export type Result = typeof ResultScheme
+// #region Level
+export type Level = `Level ${number}` & keyof typeof ResultScheme
 
-export type ResultType = keyof typeof ResultScheme
+export interface LevelItem {
+  title: string
+  description: string
+}
 
-export type ResultItem = typeof ResultScheme['Level 1']
+export type LevelScheme = Record<Level, LevelItem>
 // #endregion

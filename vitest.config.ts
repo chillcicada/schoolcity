@@ -10,11 +10,12 @@ export default defineConfig({
     environment: 'jsdom',
     alias: {
       '@': resolve(__dirname, './src'),
+      '@/': `${resolve(__dirname, './src')}/`,
     },
   },
   plugins: [
     AutoImport({
-      imports: ['vue', 'vitest', 'vue-router'],
+      imports: ['vue', 'vitest', 'vue-router', 'pinia'],
       dts: false,
     }),
   ],

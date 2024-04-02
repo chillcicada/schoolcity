@@ -1,10 +1,10 @@
 import { randomSize } from '@/utils'
 
 describe('randomSize', () => {
-  it('should return a number between 1 and 10', () => {
+  it('should return a number between 48 and 72', () => {
     const result = randomSize()
-    expect(result).toBeGreaterThanOrEqual(1)
-    expect(result).toBeLessThanOrEqual(10)
+    expect(result).toBeGreaterThanOrEqual(48)
+    expect(result).toBeLessThanOrEqual(72)
   })
 
   it('should return a number between 2 and 5', () => {

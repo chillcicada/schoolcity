@@ -8,13 +8,28 @@ html {
   overscroll-behavior: none;
 }
 
-body {
+body,
+#app {
   /* todo: media width */
   max-width: var(--max-width);
   margin: 0 auto;
   font-size: 20px;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
+}
+
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: var(--md-sys-color-surface-variant, #000);
+  opacity: 0.75;
+  position: fixed;
+  z-index: 2024;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
 }
 
 * {
@@ -58,3 +73,6 @@ a {
     opacity: 0;
   }
 }
+
+/* safari fix */
+/* safari 还是吃屎去吧 */

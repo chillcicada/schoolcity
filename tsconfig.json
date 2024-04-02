@@ -13,7 +13,7 @@
       "@@/*": ["./*"]
     },
     "resolveJsonModule": true,
-    "types": ["vite/client", "vitest", "vue"],
+    "types": ["vitest", "vite/client", "vue"],
     "allowImportingTsExtensions": true,
 
     /* Linting */

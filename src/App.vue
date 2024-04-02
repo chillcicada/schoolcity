@@ -4,7 +4,8 @@ import backgroundUrl from '@/assets/media/background_by_F0rest.webp'
 
 const background = ref<HTMLImageElement | null>(null)
 
-const dark = ref<boolean>(window.matchMedia('(prefers-color-scheme: dark)').matches)
+// const dark = ref(window.matchMedia('(prefers-color-scheme: dark)').matches)
+const dark = ref(true)
 
 async function setBackgroundTheme() {
   if (background.value) {
@@ -25,10 +26,12 @@ onMounted(() => {
   <img id="background" ref="background" :src="backgroundUrl" alt="background">
   <!-- TODO: set transition when color change -->
   <!-- <button class="i-carbon-moon" @click="dark = !dark" /> -->
-  <main flex-1 px-4 pb-4 text-center>
-    <RouterView />
-  </main>
-  <Footer />
+  <!-- <RouterView v-slot="{ Component }">
+    <Transition>
+      <component :is="Component" />
+    </Transition>
+  </RouterView> -->
+  <RouterView />
 </template>
 
 <style scoped>

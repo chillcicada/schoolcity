@@ -4,7 +4,7 @@
   "type": "module",
   "version": "0.0.1",
   "private": true,
-  "packageManager": "pnpm@8.15.5",
+  "packageManager": "pnpm@8.15.6",
   "author": {
     "name": "chillcicada",
     "email": "2210227279@qq.com",
@@ -32,9 +32,12 @@
   },
   "dependencies": {
     "@material/material-color-utilities": "0.2.7",
+    "@unocss/reset": "0.59.0-beta.1",
     "lodash": "4.17.21",
     "nprogress": "0.2.0",
-    "vue": "3.4.21"
+    "pinia": "2.1.7",
+    "vue": "3.4.21",
+    "vue-router": "4.3.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "2.9.0",
@@ -58,14 +61,15 @@
     "unplugin-vue-components": "0.26.0",
     "vite": "5.2.0",
     "vite-plugin-vue-devtools": "7.0.24",
+    "vite-plugin-webfont-dl": "3.9.2",
     "vitest": "1.4.0",
-    "vue-router": "4.3.0",
     "vue-tsc": "2.0.6"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
-    "*": "eslint --fix"
+    "*": "eslint --fix",
+    "*.{spec,test}.ts": "vitest related --run"
   }
 }
