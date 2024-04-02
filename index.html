@@ -6,12 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>%VITE_APP_TITLE%</title>
   </head>
-  <body class="font-sans">
-    <div id="app" flex flex-col justify-center min-h="screen" container></div>
-    <script type="module" src="/src/main.ts"></script>
+  <body class="font-sans" dark:text-hex-f5f5f5 dark:bg-hex-201a1a>
+    <div id="app" h-full mx-auto flex="~ col"></div>
     <noscript>
-      This website requires JavaScript to function properly. Please enable
-      JavaScript to continue.
+      This website requires JavaScript to function properly.
+      Please enable JavaScript to continue.
     </noscript>
+    <script>
+      ;(function () {
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches
+        const setting = localStorage.getItem('color-schema') || 'auto'
+        if (setting === 'dark' || (prefersDark && setting !== 'light'))
+          document.documentElement.classList.toggle('dark', true)
+      })()
+    </script>
+    <script type="module" src="/src/main.ts"></script>
+
   </body>
 </html>

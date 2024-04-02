@@ -1,21 +1,22 @@
+/* base */
 :root {
-  color-scheme: light dark;
-  color: var(--md-sys-color-primary);
-  --max-width: 960px;
+  --bg-color: #f5f5f5;
 }
 
-html {
-  overscroll-behavior: none;
-}
-
+html,
 body,
 #app {
-  /* todo: media width */
-  max-width: var(--max-width);
-  margin: 0 auto;
-  font-size: 20px;
-  text-align: center;
+  height: 100%;
+  background: var(--bg-color);
+  transition: background 0.8s !important;
 }
+
+html.dark {
+  --bg-color: #201a1a;
+  color-scheme: dark;
+}
+
+/* nprogress */
 
 #nprogress {
   pointer-events: none;
@@ -32,12 +33,10 @@ body,
   height: 2px;
 }
 
+/* user select */
+
 * {
   user-select: none;
-}
-
-a {
-  text-decoration: none;
 }
 
 /* scrollbars */

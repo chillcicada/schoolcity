@@ -3,6 +3,7 @@
     "composite": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "types": ["vitest", "vite/client", "vite-plugin-vue-layouts/client", "unplugin-vue-macros/macros-global", "unplugin-vue-router/client"],
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true

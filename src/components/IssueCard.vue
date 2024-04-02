@@ -34,7 +34,7 @@ onMounted(() => {
         {{ props.content }}
       </div>
       <div v-if="scoreboard.done">
-        你已经提及了答案，无法更改了qaq。
+        你已经提交了答案，无法更改了qaq。
       </div>
       <NRadioGroup v-model:value="input" :on-update-checked="updateChecked(input)" class="issue-options" :disabled="scoreboard.done">
         <NSpace justify="center" vertical>
@@ -52,7 +52,7 @@ onMounted(() => {
 
 <style scoped>
 .issue-card {
-  margin: auto;
+  margin: 0 auto;
   padding: 20px;
   width: 80%;
   border: none;

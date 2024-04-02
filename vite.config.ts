@@ -3,18 +3,35 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import Layouts from 'vite-plugin-vue-layouts'
 import Unocss from 'unocss/vite'
+import VueMacros from 'unplugin-vue-macros/vite'
+import VueRouter from 'unplugin-vue-router/vite'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import WebFontDownload from 'vite-plugin-webfont-dl'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
+// fuck the config, maybe i should migrate it to nuxt3. :(
 export default defineConfig({
   plugins: [
-    vue(),
+    VueMacros({
+      defineOptions: false,
+      defineModels: false,
+      plugins: {
+        vue: vue({
+          script: {
+            propsDestructure: true,
+            defineModel: true,
+          },
+        }),
+      },
+    }),
     AutoImport({
-      imports: ['vue', 'vue-router', 'vitest', 'pinia'],
+      imports: ['vue', 'vitest', 'pinia', '@vueuse/core', VueRouterAutoImports, { 'vue-router/auto': ['useLink'] }],
       dts: 'src/auto-import.d.ts',
       vueTemplate: true,
+      dirs: [],
     }),
     Components({
       dts: 'src/components.d.ts',
@@ -22,13 +39,17 @@ export default defineConfig({
       extensions: ['vue'],
       include: [/\.vue$/, /\.vue\?vue/],
     }),
+    Layouts(),
     Unocss(),
+    VueRouter({
+      extensions: ['.vue'],
+      dts: 'src/router.d.ts',
+    }),
     VueDevTools(),
     WebFontDownload(),
   ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
       '@/': `${resolve(__dirname, 'src')}/`,
     },
   },
@@ -37,5 +58,11 @@ export default defineConfig({
   },
   build: {
     cssMinify: 'lightningcss',
+  },
+  test: {
+    mockReset: true,
+    restoreMocks: true,
+    include: ['src/__tests__\/*.{spec,test}.ts'],
+    environment: 'jsdom',
   },
 })

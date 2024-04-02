@@ -12,21 +12,21 @@ const isShow = ref<boolean>(true)
 <template>
   <Transition name="banner">
     <div v-show="isShow" class="banner" @click="isShow = false">
-      <span class="banner-line-top" />
-      <span class="banner-content font-serif">
-        <div class="banner-left">
+      <span class="banner-line-top" banner-line top-0 />
+      <span class="banner-content" font-serif>
+        <div class="banner-left" flex="~ col" items-center justify-center>
           <span v-for="(char, index) in props.left" :key="char" :class="index === 0 ? 'banner-char' : 'banner-char'" :style="`--char-font-size: ${randomSize()}px`">
             {{ char }}
           </span>
         </div>
-        <div class="banner-right">
+        <div class="banner-right" flex="~ col" items-center justify-center>
           <span v-for="(char, index) in props.right" :key="char" :class="index === 0 ? 'banner-char-marked' : 'banner-char'" :style="`--char-font-size: ${randomSize()}px;`">
             {{ char }}
           </span>
         </div>
       </span>
-      <span class="banner-line-bottom" />
-      <div class="banner-btn i-carbon-arrow-right" @click="isShow = false" />
+      <span class="banner-line-bottom" banner-line bottom-0 />
+      <div i-carbon-arrow-right fixed bottom-0 right-0 m-1 cursor-pointer rounded text-3xl color-hex-e87334 @click="isShow = false" />
     </div>
   </Transition>
 </template>
@@ -70,7 +70,7 @@ const isShow = ref<boolean>(true)
 }
 
 .banner-leave-active {
-  transition: opacity 0.5s ease-out;
+  transition: all 0.5s ease-out;
 }
 </style>
 
@@ -93,21 +93,8 @@ const isShow = ref<boolean>(true)
   animation-timing-function: ease-in;
 }
 
-.banner-line-top {
-  top: 0;
-}
-
-.banner-line-bottom {
-  bottom: 0;
-}
-
 .banner-line-top,
 .banner-line-bottom {
-  width: 1px;
-  height: 50%;
-  position: absolute;
-  display: fixed;
-  background-color: #EB7334;
   animation-name: banner-line;
   animation-duration: 1.5s;
   animation-fill-mode: forwards;
@@ -126,20 +113,6 @@ const isShow = ref<boolean>(true)
   animation-timing-function: ease-in;
 }
 
-.banner-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.banner-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .banner-char,
 .banner-char-marked {
   font-size: var(--char-font-size, 1rem);
@@ -149,15 +122,5 @@ const isShow = ref<boolean>(true)
 .banner-char-marked {
   background-color: #EB7334;
   color: white;
-}
-
-.banner-btn {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  margin: 1rem;
-  font-size: 2rem;
-  color: #EB7334;
-  cursor: pointer;
 }
 </style>
