@@ -7,7 +7,11 @@ const router = useRouter()
     <div text-4xl>
       <div i-carbon-warning inline-block />
     </div>
-    <RouterView />
+    <RouterView v-slot="{ Component }">
+      <Transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </Transition>
+    </RouterView>
     <div>
       <button text-sm btn m="3 t4" @click="router.back()">
         Back

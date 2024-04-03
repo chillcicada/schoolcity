@@ -2,10 +2,11 @@
 </script>
 
 <template>
-  <Header />
-  <div flex flex-col>
-    TODO: 不想 do 了qaq
-    <span>© 2024 JSD DEV LAB</span>
+  <div>
+    <Header />
+    <div flex flex-col>
+      Welcome to Here!!!!! (*'▽'*)♪♪
+    </div>
   </div>
 </template>
 

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { NDivider } from 'naive-ui'
 import Results from '@/json/results.json'
 import MagicUrl from '@/assets/media/magic.png'
 import ScienceUrl from '@/assets/media/science.png'
@@ -38,12 +39,19 @@ onMounted(() => {
         <div text-3xl class="text-glow">
           {{ Results[result.level].title }}
         </div>
-        <div text-left class="text-glow">
+        <div class="text-glow" px-2 text-left>
           {{ Results[result.level].description }}
         </div>
-        <button inline-block cursor-pointer rounded-5 bg-transparent px-4 text="xl gray" py-1 outline-none disabled:cursor-default disabled:backdrop-blur-2 hover:backdrop-blur-2 @click.once="reset()">
+        <button inline-block cursor-pointer rounded-5 bg-transparent px-4 py-2 text-xl text-gray-7 outline-none dark:text-gray-4 hover:backdrop-blur-2 @click.once="reset()">
           不满意？再来一次！
         </button>
+        <NDivider px-4 color-gray-8 dark:color-gray-2 style="--n-color: var(--md-sys-color-on-background)">
+          E N D
+        </NDivider>
+        <div text-xl>
+          感谢您的参与！
+          如果您对次世代开发部有兴趣，欢迎<u cursor-pointer @click="router.push('/about')">加入我们</u>！
+        </div>
       </div>
     </main>
     <Footer z-9 />
@@ -92,6 +100,6 @@ level-result-container {
 }
 
 .text-glow {
-  text-shadow: 0 0 20px var(--md-sys-color-primary-container), 0 0 30px var(--md-sys-color-primary-container);
+  text-shadow: 0 0 20px var(--md-sys-color-on-background), 0 0 30px var(--md-sys-color-on-background);
 }
 </style>

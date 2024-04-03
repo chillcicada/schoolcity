@@ -9,6 +9,7 @@ body,
   height: 100%;
   background: var(--bg-color);
   transition: background 0.8s !important;
+  overflow-x: hidden;
 }
 
 html.dark {
@@ -41,7 +42,7 @@ html.dark {
 
 /* scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -71,4 +72,16 @@ html.dark {
   to {
     opacity: 0;
   }
+}
+
+/* transitions */
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }

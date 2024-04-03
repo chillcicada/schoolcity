@@ -20,8 +20,10 @@ onMounted(() => {
 
 <template>
   <Banner left="とある次世代の" right="超咖啡屋" />
-  <img id="background" ref="background" :src="backgroundUrl" alt="background" object="cc cover" fixed z--2 block h-full w-full overflow-y-hidden overscroll-none>
-  <div id="overlay" fixed left-0 top-0 z--1 block h-full w-full overflow-y-hidden overscroll-none />
+  <img id="background" ref="background" :src="backgroundUrl" alt="background" object="cc cover" fixed z--2 block h-full w-full overflow-hidden overscroll-none>
+  <Transition name="fade" mode="out-in">
+    <div v-show="isDark" id="overlay" fixed left-0 top-0 z--1 block h-full w-full overflow-hidden overscroll-none />
+  </Transition>
   <main flex="1 col" h-full text-center text-2xl>
     <RouterView />
   </main>
