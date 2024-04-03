@@ -7,7 +7,7 @@
 ## TODO
 
 - [ ] refine the `level` page, priority: highest
-- [ ] margate to nuxt3
+- [ ] migrate to nuxt3
 
 ## Deploy
 

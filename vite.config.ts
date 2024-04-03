@@ -52,12 +52,15 @@ export default defineConfig({
       minifyCss: true,
       async: true,
       cache: true,
-      proxy: {
-        protocol: 'http',
-        host: '127.0.0.1',
-        // eslint-disable-next-line node/prefer-global/process
-        port: process.env.HTTP_PROXY_PORT as unknown as number || 7890,
-      },
+      // eslint-disable-next-line node/prefer-global/process
+      proxy: process.env.HTTP_PROXY_PORT
+        ? {
+            protocol: 'http',
+            host: '127.0.0.1',
+            // eslint-disable-next-line node/prefer-global/process
+            port: process.env.HTTP_PROXY_PORT as unknown as number || 7890,
+          }
+        : false,
     }),
   ],
   resolve: {
