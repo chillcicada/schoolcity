@@ -1,19 +1,4 @@
 import { defineConfig, presetAttributify, presetIcons, presetTypography, presetUno, presetWebFonts, transformerDirectives, transformerVariantGroup } from 'unocss'
-import axios from 'axios'
-import { HttpProxyAgent } from 'http-proxy-agent'
-import 'dotenv/config'
-
-async function fetchWebFonts(url: string) {
-  try {
-    // eslint-disable-next-line node/prefer-global/process
-    return axios.get(url, { httpsAgent: new HttpProxyAgent(`http://127.0.0.1:${process.env.HTTP_PROXY_PORT || '7890'}`) }).then(res => res.data)
-  }
-  catch (e) {
-    console.error(e)
-    console.warn('[Proxy Error] Failed to fetch web fonts with default proxy, fallback to default fetcher for google.')
-    return axios.get(url).then(res => res.data)
-  }
-}
 
 export default defineConfig({
   presets: [
@@ -24,7 +9,6 @@ export default defineConfig({
     presetUno(),
     presetTypography(),
     presetWebFonts({
-      customFetch: fetchWebFonts,
       fonts: {
         sans: 'DM Sans',
         serif: 'DM Serif Display',
