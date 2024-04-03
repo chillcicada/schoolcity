@@ -32,7 +32,7 @@ export const useLevelResultStore = defineStore('level-result', {
     level: Level
     score: number
   } => ({
-    level: 'Level 0',
+    level: 'Level 1',
     score: 0,
   }),
 

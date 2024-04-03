@@ -29,30 +29,35 @@ function commit() {
   result.setLevel(scoreboard.getScore())
 }
 
+initLocalStore()
+
 onMounted(() => {
-  initLocalStore()
   initScoreboard()
 })
 </script>
 
 <template>
   <Transition name="level-test">
-    <div v-if="!scoreboard.done">
+    <div v-if="!scoreboard.done" h-full flex="~ col" px-6 py-12>
+      <div class="line-x" fixed bottom-18 left-0 z--1 h-2px w-full bg-white color-white opacity-50 />
+      <div class="line-y" fixed right-10 top-0 z--1 h-full w-2px bg-white color-white opacity-50 />
+      <div text-left>
+        {{ idx + 1 }} / {{ length }}
+      </div>
       <TransitionGroup name="issue" tag="div">
-        <div>{{ idx + 1 }} | {{ length }}</div>
         <div v-for="(issue, index) in Issues" v-show="idx === index" :key="issue.id" class="issue" m-auto backdrop-blur-sm>
           <IssueCard :id="issue.id" :ref="`issue${idx}`" :content="issue.content" :options="issue.options" :type="issue.type" :answer="issue.answer" />
         </div>
-        <button :disabled="idx === 0 ? true : false" btn @click="idx--">
-          Prev
-        </button>
-        <button :disabled="idx === length - 1 ? true : false" btn @click="idx++">
-          Next
-        </button>
-        <button btn @click="commit">
-          Commit
-        </button>
       </TransitionGroup>
+      <button :disabled="idx === 0" py-2 btn @click="idx--">
+        Prev
+      </button>
+      <button :disabled="idx === length - 1" py-2 btn @click="idx++">
+        Next
+      </button>
+      <button v-show="idx === length - 1" py-2 btn @click="commit">
+        Commit
+      </button>
     </div>
 
     <div v-else class="level-result" h-full flex="~ col" backdrop-blur-2px>
@@ -63,7 +68,7 @@ onMounted(() => {
         <div>
           恭喜您完成了全部测试！
         </div>
-        <RouterLink to="/level/result" flex flex-col items-center justify-center text-xl class="link-to-result">
+        <RouterLink to="/level/result" mt-2 flex flex-col items-center justify-center text-xl class="link-to-result">
           <div>
             <div id="chevron-right-left" i-carbon-chevron-right inline-block />
             <div id="chevron-right" i-carbon-chevron-right inline-block />
@@ -101,6 +106,7 @@ onMounted(() => {
 .issue-leave-active {
   position: absolute;
 }
+
 @keyframes slideIn {
   from {
     transform: translateY(20%);
@@ -114,6 +120,11 @@ onMounted(() => {
 </style>
 
 <style scoped>
+.line-x,
+.line-y {
+  box-shadow: 0 0 20px 5px white;
+}
+
 #footer {
   animation-name: slideIn;
   animation-duration: 1s;

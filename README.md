@@ -4,10 +4,30 @@
 
 ## Features
 
+- flat eslint config
+- auto router
+- layout
+- atomic css by unocss and tailwindcss reset
+- pinia
+- auto import and components
+- vue dev tools
+
 ## TODO
 
 - [ ] refine the `level` page, priority: highest
 - [ ] migrate to nuxt3
+
+## Development
+
+> This repo requires node >= 18 and use pnpm as the package manager.
+
+**It's better recommended to use VSCode as the editor.**
+
+- git clone this repository
+- run `pnpm i` to install dependencies
+- run `pnpm dev` to start the development server
+- run `pnpm serve` to start the development server with remote
+- run `pnpm build` to build the project, the output will be in the `dist` folder
 
 ## Deploy
 
@@ -21,7 +41,8 @@ server {
   server_name jsd-school-city.com;
 
   location / {
-    proxy_pass http://localhost:3000; # Nodejs server, then you should config your nodejs server
+    proxy_pass http://localhost:3000;
+    # Nodejs server, and you should config your nodejs server
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection 'upgrade';
@@ -31,7 +52,7 @@ server {
 }
 ```
 
-> without proxy pass, with static files
+> with static files instead of proxy pass
 
 ```nginx
 server {
@@ -91,3 +112,7 @@ Then add this config as a vhost in your nginx config file. The config of Apache 
 1. git clone this repository
 2. open vercel and import this repository
 3. deploy
+
+or you can click the following button to deploy:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/chillcicada/schoolcity)

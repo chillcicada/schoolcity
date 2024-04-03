@@ -3,7 +3,6 @@ import axios from 'axios'
 import { HttpProxyAgent } from 'http-proxy-agent'
 import 'dotenv/config'
 
-// eslint-disable-next-line unused-imports/no-unused-vars
 async function fetchWebFonts(url: string) {
   try {
     // eslint-disable-next-line node/prefer-global/process
@@ -25,7 +24,7 @@ export default defineConfig({
     presetUno(),
     presetTypography(),
     presetWebFonts({
-      // customFetch: fetchWebFonts,
+      customFetch: fetchWebFonts,
       fonts: {
         sans: 'DM Sans',
         serif: 'DM Serif Display',

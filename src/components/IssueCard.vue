@@ -28,7 +28,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="issue-card">
+  <div class="issue-card" rounded-4 bg-gray-1 bg-op-20 pb-2 dark:bg-gray dark:bg-op-20>
     <div v-if="props.type === 'single'" class="issue-card-single">
       <div class="issue-content">
         {{ props.content }}
@@ -38,7 +38,7 @@ onMounted(() => {
       </div>
       <NRadioGroup v-model:value="input" :on-update-checked="updateChecked(input)" class="issue-options" :disabled="scoreboard.done">
         <NSpace justify="center" vertical>
-          <NRadioButton v-for="(option, key) in props.options" :key="key" :value="key" class="issue-option">
+          <NRadioButton v-for="(option, key) in props.options" :key="key" :value="key" class="issue-option" text-lg>
             {{ option }}
           </NRadioButton>
         </NSpace>
@@ -51,16 +51,4 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.issue-card {
-  margin: 0 auto;
-  padding: 20px;
-  width: 80%;
-  border: none;
-  border-radius: 5px;
-  background-color: #fff8;
-}
-
-.issue-option {
-  font-size: 16px;
-}
 </style>

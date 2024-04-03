@@ -3,9 +3,19 @@ import Results from '@/json/results.json'
 import MagicUrl from '@/assets/media/magic.png'
 import ScienceUrl from '@/assets/media/science.png'
 import { useLevelResultStore, useLevelScoreboardStore } from '@/store'
+import { clearLS, putLS } from '@/utils'
 
 const scoreboard = useLevelScoreboardStore()
 const result = useLevelResultStore()
+const router = useRouter()
+
+function reset() {
+  clearLS()
+  putLS('jsd-level-issue-done', false)
+  scoreboard.done = false
+  result.setLevel(0)
+  router.push('/level')
+}
 
 onMounted(() => {
   result.setLevel(scoreboard.getScore())
@@ -13,14 +23,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="line-x" fixed left-0 top-22 h-2px w-full bg-white color-white />
+  <div class="line-x" fixed left-0 top-18 h-2px w-full bg-white color-white />
   <div class="line-y" fixed left-10 top-0 h-full w-2px bg-white color-white />
 
   <div h-full flex="~ col">
-    <main class="level-result" flex="~ 1 col" text="center 2xl" p-8 py-20 backdrop-blur-2px>
+    <main class="level-result" flex="~ 1 col" text="center 2xl" px-8 py-16 backdrop-blur-2px>
       <div class="level-result-container" h-full rounded-2 bg-coolgray bg-op-20 p-2 font-serif filter-drop-shadow-color-op-10 dark:bg-black dark:bg-op-20>
-        <div flex items-center justify-between>
-          <div class="text-glow" ml-2 text-5xl>
+        <div flex items-center justify-center gap-3>
+          <div class="text-glow" text-5xl>
             {{ result.level }}
           </div>
           <img id="image" :src="Math.random() < 0.5 ? MagicUrl : ScienceUrl" alt="image" h-auto w-100px>
@@ -31,6 +41,9 @@ onMounted(() => {
         <div text-left class="text-glow">
           {{ Results[result.level].description }}
         </div>
+        <button inline-block cursor-pointer rounded-5 bg-transparent px-4 text="xl gray" py-1 outline-none disabled:cursor-default disabled:backdrop-blur-2 hover:backdrop-blur-2 @click.once="reset()">
+          不满意？再来一次！
+        </button>
       </div>
     </main>
     <Footer z-9 />

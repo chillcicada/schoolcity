@@ -16,7 +16,7 @@ const socials: Social[] = [
     <div class="footer-social" flex justify-start gap-4 text-size-base text-white>
       <a v-for="item in socials" :key="item.name" :class="item.icon" :href="item.link" target="_blank" />
     </div>
-    <a class="footer-join" mt-2 text-base color-gray-1 font-bold href="" target="_blank">Join us</a>
+    <a class="footer-join" mt-2 text-base color-gray-1 font-bold href="/about" target="_blank">Join us</a>
     <div class="footer-content" flex text="sm gray right" justify-end>
       Author: chillcicada | Background: F0rest
     </div>
