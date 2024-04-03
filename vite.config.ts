@@ -11,7 +11,6 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 import WebFontDownload from 'vite-plugin-webfont-dl'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
-import 'dotenv/config'
 
 // fuck the config, maybe i should migrate it to nuxt3. :(
 export default defineConfig({
@@ -52,15 +51,7 @@ export default defineConfig({
       minifyCss: true,
       async: true,
       cache: true,
-      // eslint-disable-next-line node/prefer-global/process
-      proxy: process.env.HTTP_PROXY_PORT
-        ? {
-            protocol: 'http',
-            host: '127.0.0.1',
-            // eslint-disable-next-line node/prefer-global/process
-            port: process.env.HTTP_PROXY_PORT as unknown as number || 7890,
-          }
-        : false,
+      proxy: false,
     }),
   ],
   resolve: {
