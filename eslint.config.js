@@ -1,7 +1,8 @@
 import antfu from '@antfu/eslint-config'
+import unocss from '@unocss/eslint-config/flat'
 
 export default antfu({
   formatter: true,
-  unocss: true,
-  exclude: ['dist', 'node_modules', 'pnpm-lock.yaml'],
+  unocss,
+  exclude: ['pnpm-lock.yaml'],
 })

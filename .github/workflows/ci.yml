@@ -20,10 +20,10 @@ jobs:
           cache: pnpm
 
       - name: Install
-        run: pnpm i
+        run: pnpm install
 
       - name: Lint
-        run: pnpm lint
+        run: pnpm run lint
 
   type-check:
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
         run: pnpm install
 
       - name: Type check
-        run: pnpm check:types
+        run: pnpm run check:types
 
   test:
     runs-on: ubuntu-latest
@@ -55,4 +55,4 @@ jobs:
         run: pnpm install
 
       - name: Test
-        run: pnpm test
+        run: pnpm run test

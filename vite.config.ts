@@ -11,6 +11,7 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 import WebFontDownload from 'vite-plugin-webfont-dl'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+import 'dotenv/config'
 
 // fuck the config, maybe i should migrate it to nuxt3. :(
 export default defineConfig({
@@ -46,7 +47,18 @@ export default defineConfig({
       dts: 'src/router.d.ts',
     }),
     VueDevTools(),
-    WebFontDownload(),
+    WebFontDownload(['https://fonts.googleapis.com/css2?family=DM+Sans&family=DM+Serif+Display&family=DM+Mono&display=swap'], {
+      injectAsStyleTag: true,
+      minifyCss: true,
+      async: true,
+      cache: true,
+      proxy: {
+        protocol: 'http',
+        host: '127.0.0.1',
+        // eslint-disable-next-line node/prefer-global/process
+        port: process.env.HTTP_PROXY_PORT as unknown as number || 7890,
+      },
+    }),
   ],
   resolve: {
     alias: {

@@ -6,7 +6,7 @@ import 'dotenv/config'
 async function fetchWebFonts(url: string) {
   try {
     // eslint-disable-next-line node/prefer-global/process
-    return axios.get(url, { httpsAgent: new HttpProxyAgent(process.env.HTTP_PROXY || 'http://127.0.0.1:7890') }).then(res => res.data)
+    return axios.get(url, { httpsAgent: new HttpProxyAgent(`http://127.0.0.1:${process.env.HTTP_PROXY_PORT || '7890'}`) }).then(res => res.data)
   }
   catch (e) {
     console.error(e)

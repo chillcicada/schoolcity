@@ -2,6 +2,13 @@
 
 > Web Framework for JSD School City's level test
 
+## Features
+
+## TODO
+
+- [ ] refine the `level` page, priority: highest
+- [ ] margate to nuxt3
+
 ## Deploy
 
 ### Native (nginx for example)

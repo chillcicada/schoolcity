@@ -13,6 +13,8 @@ dist-ssr
 *.local
 .vite-ssg-dist
 .vite-ssg-temp
+coverage
+cache
 
 # Editor directories and files
 .vscode

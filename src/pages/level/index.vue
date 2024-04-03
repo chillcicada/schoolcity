@@ -1,22 +1,18 @@
 <script setup lang="ts">
 import Issues from '@/json/issues.json'
-// import Results from '@/json/results.json'
 import { useLevelResultStore, useLevelScoreboardStore } from '@/store'
-import { clearLS, getLS, putLS } from '@/utils'
+import { getLS, putLS } from '@/utils'
 
 const length = Issues.length
 
 const idx = ref(0)
 const scoreboard = useLevelScoreboardStore()
 const result = useLevelResultStore()
-// const router = useRouter()
-// const level = ref<keyof typeof Results>()
-
-const isDone = ref<boolean>(getLS('jsd-level-issue-done') === 'true')
 
 function initLocalStore() {
-  if (!isDone.value) {
-    isDone.value = false
+  scoreboard.done = getLS('jsd-level-issue-done') === 'true'
+  if (!scoreboard.done) {
+    scoreboard.done = false
     putLS('jsd-level-issue-done', false)
   }
 }
@@ -29,9 +25,8 @@ function initScoreboard() {
 
 function commit() {
   putLS('jsd-level-issue-done', true)
-  isDone.value = true
+  scoreboard.done = true
   result.setLevel(scoreboard.getScore())
-  // level.value = result.level
 }
 
 onMounted(() => {
@@ -42,7 +37,7 @@ onMounted(() => {
 
 <template>
   <Transition name="level-test">
-    <div v-if="!isDone">
+    <div v-if="!scoreboard.done">
       <TransitionGroup name="issue" tag="div">
         <div>{{ idx + 1 }} | {{ length }}</div>
         <div v-for="(issue, index) in Issues" v-show="idx === index" :key="issue.id" class="issue" m-auto backdrop-blur-sm>
@@ -57,76 +52,32 @@ onMounted(() => {
         <button btn @click="commit">
           Commit
         </button>
-        <button btn @click="clearLS">
-          Clear
-        </button>
       </TransitionGroup>
     </div>
 
-    <div v-else class="level-result" h-full flex="~ col">
-      <main class="level-result" text="center 2xl" flex-1 p-8>
+    <div v-else class="level-result" h-full flex="~ col" backdrop-blur-2px>
+      <main class="level-result" text="center 2xl" flex-1 bg-coolgray bg-op-20 p-8 dark:bg-black dark:bg-op-20>
         <div>
           <div i-carbon-warning inline-block text-5xl />
         </div>
         <div>
           恭喜您完成了全部测试！
         </div>
-        <RouterLink to="/level/result" flex flex-col items-center justify-center text-xl>
-          <div id="chevron-right" i-carbon-chevron-right inline-block />
+        <RouterLink to="/level/result" flex flex-col items-center justify-center text-xl class="link-to-result">
+          <div>
+            <div id="chevron-right-left" i-carbon-chevron-right inline-block />
+            <div id="chevron-right" i-carbon-chevron-right inline-block />
+            <div id="chevron-right-right" i-carbon-chevron-right inline-block />
+          </div>
           <div inline-block>
             点击查看结果
           </div>
         </RouterLink>
-        <!-- <div>
-          您获得了称号：{{ Results[level!].title }}
-        </div>
-        <div>
-          {{ result.level }}
-        </div> -->
       </main>
       <Footer id="footer" />
     </div>
   </Transition>
 </template>
-
-<style scoped>
-#chevron-right,
-#chevron-right::before,
-#chevron-right::after {
-  color: #9880ff;
-  animation-name: flashing;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-  display: inline-block;
-}
-
-#chevron-right::before {
-  left: -1.25rem;
-  content: 'i-carbon-chevron-right';
-  animation-delay: 0s;
-  width: 1.25rem;
-  height: 1.25rem;
-  position: absolute;
-}
-
-#chevron-right {
-  animation-delay: 0.5s;
-  width: 1.25rem;
-  height: 1.25rem;
-  position: relative;
-}
-
-#chevron-right::after {
-  left: 1.25rem;
-  content: 'i-carbon-chevron-right';
-  animation-delay: 1s;
-  width: 1.25rem;
-  height: 1.25rem;
-  position: absolute;
-}
-</style>
 
 <style>
 @keyframes flashing {
@@ -168,6 +119,38 @@ onMounted(() => {
   animation-duration: 1s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+}
+
+#chevron-right,
+#chevron-right-left,
+#chevron-right-right {
+  color: var(--md-sys-color-error);
+  animation-name: flashing;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  display: inline-block;
+}
+
+#chevron-right-left {
+  animation-delay: 0s;
+}
+
+#chevron-right {
+  animation-delay: 0.5s;
+}
+
+#chevron-right-right {
+  animation-delay: 1s;
+}
+
+.level-result {
+  transition: all 0.5s ease !important;
+}
+
+.link-to-result:hover {
+  color: var(--md-sys-color-primary);
 }
 </style>
 
