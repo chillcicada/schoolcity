@@ -1,4 +1,20 @@
+import process from 'node:process'
+
 import { defineConfig, presetAttributify, presetIcons, presetTypography, presetUno, presetWebFonts, transformerDirectives, transformerVariantGroup } from 'unocss'
+
+import axios from 'axios'
+import { HttpProxyAgent } from 'http-proxy-agent'
+import dotenv from 'dotenv'
+
+dotenv.config({ path: './.env.local' })
+
+async function fetchWebFonts(url: string) {
+  const agent: string = process.env.HTTP_PROXY_AGENT || ''
+  if (agent)
+    return axios.get(url, { httpAgent: new HttpProxyAgent(agent) }).then(res => res.data)
+  // it seems that without explicit agent, axios will use the system global proxy, :)
+  return axios.get(url).then(res => res.data)
+}
 
 export default defineConfig({
   presets: [
@@ -9,6 +25,7 @@ export default defineConfig({
     presetUno(),
     presetTypography(),
     presetWebFonts({
+      customFetch: fetchWebFonts,
       fonts: {
         sans: 'DM Sans',
         serif: 'DM Serif Display',
